@@ -59,7 +59,9 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: quill-${{ matrix.name }}
-          path: dist/*
+          path: |
+            dist/*.zip
+            dist/*.tar.gz
           if-no-files-found: error
 
   publish:
@@ -73,7 +75,11 @@ jobs:
           merge-multiple: true
 
       - name: Checksums
-        run: cd dist && sha256sum * > SHA256SUMS && cat SHA256SUMS
+        run: |
+          cd dist
+          find . -maxdepth 1 -type f \( -name '*.zip' -o -name '*.tar.gz' \) -print0 \
+            | sort -z | xargs -0 sha256sum > SHA256SUMS
+          cat SHA256SUMS
 
       - name: Create release
         env:
