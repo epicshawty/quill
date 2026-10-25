@@ -3,7 +3,6 @@
 //! state, URL launching) is Zig.
 
 const std = @import("std");
-const builtin = @import("builtin");
 const Io = std.Io;
 
 const Webview = @import("webview").Webview;
