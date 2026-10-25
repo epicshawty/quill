@@ -14,7 +14,7 @@ const index_html = @embedFile("assets/index.html");
 const style_css = @embedFile("assets/style.css");
 const app_js = @embedFile("assets/app.js");
 
-pub const version = "0.1.1";
+pub const version = "0.1.2";
 
 const welcome_md =
     \\# Quill

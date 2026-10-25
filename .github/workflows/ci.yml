@@ -29,7 +29,7 @@ jobs:
         run: zig build test --summary all
 
       - name: Build
-        run: zig build -Doptimize=ReleaseSmall
+        run: zig build -Dcpu=baseline -Doptimize=ReleaseSmall
 
   cross:
     name: cross-compile ${{ matrix.target }}

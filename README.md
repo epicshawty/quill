@@ -62,6 +62,13 @@ zig build -Dtarget=aarch64-linux-gnu -Doptimize=ReleaseSmall
 
 macOS must be built on macOS: Apple's SDK is not redistributable.
 
+Shipping a binary means building for a baseline CPU, or it will only run on
+hardware at least as new as the machine that compiled it:
+
+```sh
+zig build -Dcpu=baseline -Doptimize=ReleaseSmall
+```
+
 ## Usage
 
 ```sh
