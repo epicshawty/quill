@@ -2,6 +2,12 @@
 
 All notable changes to Quill. This project follows [Semantic Versioning](https://semver.org/).
 
+## [0.1.1] - 2026-10-24
+
+- Fix: modified state is derived from the buffer instead of an event flag, so a
+  freshly opened document no longer shows the unsaved marker.
+- Docs: refreshed the README screenshot.
+
 ## [0.1.0] - 2026-10-24
 
 First release.
@@ -16,4 +22,5 @@ First release.
 - Theme follows the system, with light/dark override and zoom.
 - Cross-compiles to Windows and Linux from any host; macOS builds on macOS.
 
+[0.1.1]: https://github.com/epicshawty/quill/releases/tag/v0.1.1
 [0.1.0]: https://github.com/epicshawty/quill/releases/tag/v0.1.0

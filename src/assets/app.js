@@ -150,9 +150,11 @@
     bridge.title(`${prefix}${state.name} — Quill`);
   }
 
-  function setDirty(value) {
-    state.dirty = value;
-    els.dirty.hidden = !value;
+  /// Dirty state is derived from the buffer, never tracked as a flag: a stray
+  /// input event can no longer mark an untouched document as modified.
+  function setDirty() {
+    state.dirty = state.savedText !== null && els.src.value !== state.savedText;
+    els.dirty.hidden = !state.dirty;
     setTitle();
   }
 
@@ -170,7 +172,7 @@
     els.docname.textContent = state.name;
     els.docname.title = path || `${state.name} (not saved to disk yet)`;
 
-    setDirty(false);
+    setDirty();
     state.lastRendered = null;
     updateStats();
     renderNow(true);
@@ -204,7 +206,7 @@
     try {
       await bridge.save(els.src.value);
       state.savedText = els.src.value;
-      setDirty(false);
+      setDirty();
       status(`saved ${state.name}`);
     } catch (err) {
       toast(`Could not save: ${err}`);
@@ -226,7 +228,7 @@
       a.remove();
     }, 1500);
     state.savedText = els.src.value;
-    setDirty(false);
+    setDirty();
     toast(`Exported a copy as ${suggested}`);
   }
 
@@ -264,7 +266,7 @@
   }
 
   function onInput() {
-    setDirty(els.src.value !== state.savedText);
+    setDirty();
     updateStats();
     scheduleRender();
   }
