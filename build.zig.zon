@@ -1,0 +1,22 @@
+.{
+    .name = .quill,
+    .version = "0.1.0",
+    .fingerprint = 0x943b97bbab6c4bd5,
+    .minimum_zig_version = "0.17.0",
+    .dependencies = .{
+        .webview = .{
+            .url = "git+https://github.com/happystraw/zig-webview#fee55f395528b66338fa496c8131c1466b76c768",
+            .hash = "webview-0.1.0-mgPxHGBfKQDfUGh2sTdiuIOVrBHRtvNZE4-B8NXoEWxA",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+        "deps/md4c",
+        "docs",
+        "LICENSE",
+        "README.md",
+        "CHANGELOG.md",
+    },
+}

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quill</title>
+<style>/*STYLE*/</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/>
+      </svg>
+      <span>Quill</span>
+    </div>
+
+    <div class="docinfo">
+      <span id="docname" class="docname">untitled.md</span>
+      <span id="dirty" class="dot" title="Unsaved changes" hidden></span>
+    </div>
+
+    <div class="spacer"></div>
+
+    <nav class="tools">
+      <button class="btn" id="btn-open" title="Open a file (Ctrl+O)">Open</button>
+      <button class="btn primary" id="btn-save" title="Save (Ctrl+S)">Save</button>
+      <button class="btn icon" id="btn-saveas" title="Save a copy (Ctrl+Shift+S)" aria-label="Save a copy">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+             stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+      </button>
+      <button class="btn icon" id="btn-split" title="Toggle preview (Ctrl+E)" aria-label="Toggle preview">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+             stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M12 4v16"/></svg>
+      </button>
+      <button class="btn icon" id="btn-theme" title="Theme: auto" aria-label="Change theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+             stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <main class="panes" id="panes">
+    <section class="pane pane-edit">
+      <textarea id="src" spellcheck="false" autocomplete="off" autocapitalize="off"
+                placeholder="# Start writing&#10;&#10;Markdown renders on the right as you type."></textarea>
+    </section>
+    <div class="splitter" id="splitter" role="separator" aria-orientation="vertical" tabindex="0"></div>
+    <section class="pane pane-view">
+      <article id="preview" class="md"></article>
+    </section>
+  </main>
+
+  <footer class="statusbar">
+    <span id="st-pos">1:1</span>
+    <span class="sep">·</span>
+    <span id="st-words">0 words</span>
+    <span class="sep">·</span>
+    <span id="st-chars">0 chars</span>
+    <span id="st-msg" class="msg"></span>
+    <span class="spacer"></span>
+    <span class="chip" title="GitHub-Flavored Markdown, rendered by md4c">GFM</span>
+    <span class="chip" title="Native window from the OS webview, app logic in Zig">Zig</span>
+  </footer>
+</div>
+
+<input type="file" id="file" accept=".md,.markdown,.mdown,.mkd,.mdx,.txt,text/markdown,text/plain" hidden>
+<div id="toast" class="toast" hidden></div>
+<script>/*SCRIPT*/</script>
+</body>
+</html>
