@@ -296,12 +296,15 @@ pub fn main(init: std.process.Init) !void {
             doc_path = abs;
             if (platform.readFile(io, arena, abs)) |text| {
                 doc_text = text;
+                doc_dir = std.fs.path.dirname(abs);
             } else |err| {
                 std.debug.print("quill: cannot read '{s}': {s}\n", .{ arg, @errorName(err) });
+                doc_path = null;
+                doc_name = "untitled.md";
             }
-            doc_dir = std.fs.path.dirname(abs);
         } else {
             std.debug.print("quill: no such file '{s}'\n", .{arg});
+            doc_name = "untitled.md";
         }
     }
 
